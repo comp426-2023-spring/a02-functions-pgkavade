@@ -20,16 +20,26 @@ if (args.h) {
 const lat = args.n || args.s * -1;
 const long = args.e || args.w * -1;
 const timezone = moment.tz.guess();
+
+const response = await fetch("https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + long + "&daily=precipitation_hours&current_weather=true&timezone=" + timezone);
+
 const data = await response.json();
 
-const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&daily=weathercode,temperature_2m_max,sunrise,precipitation_sum,precipitation_hours&timezone=${timezone}`);
-
-if (args.j) {
+if (arg.j) {
     console.log(data);
     process.exit(0);
 }
 
-const days = args.d; 
-
-const string = days == 0 ? "today." : days > 1 ? "in " + days + " days." : "tomorrow.";
-
+if (days_count == 0) {
+    console.log("today.")
+  } else if (days_count > 1) {
+    console.log("in " + days_count + " days.")
+  } else {
+    console.log("tomorrow.")
+  }
+  
+  if (data.daily.precipitation_hours[days_count] == 0) {
+      console.log("It will not rain.");
+  } else {
+      console.log("It will rain.");
+  }
