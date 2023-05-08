@@ -22,28 +22,30 @@ const long = args.e || args.w * -1;
 const timezone = moment.tz.guess();
 
 const response = await fetch("https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + long + "&daily=precipitation_hours&current_weather=true&timezone=" + timezone);
-
 const data = await response.json();
+const days = args.d
+
 
 if (arg.j) {
     console.log(data);
     process.exit(0);
 }
 
-const days = args.d;
+if(data.daily.precipitation_hours[days] == 0){
+    process.stdout.write("You will not need your galoshes "); 
 
-var string; 
-
-if (days > 1) {
-	string = "in " + days + " days.";
-} else if (days == 1) {
-	string = "tomorrow.";
 } else {
-	string = "today.";
+    process.stdout.write("You might need your galoshes ");
 }
 
-if (data.daily.precipitation_hours[days] > 0) {
-    console.log("It will rain " + string);
+if (days == 0){
+  console.log("today.")
+
+} else if (days > 1) {
+  console.log("in " + days + " days.")
+
 } else {
-    console.log("It will not rain " + string);
+  console.log("tomorrow.")
 }
+
+process.exit(0);
