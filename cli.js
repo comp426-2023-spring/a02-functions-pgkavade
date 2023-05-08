@@ -37,21 +37,23 @@ if (args.d == null) {
 	days = args.d;
 }
 
+let message = "";
+
 if(data.daily.precipitation_hours[days] > 0){
-    process.stdout.write("You might need your galoshes "); 
+    message += "You might need your galoshes "; 
 
 } else {
-    process.stdout.write("You will not need your galoshes ");
+    message += "You will not need your galoshes ";
 }
 
 if (days == 0){
-  console.log("today.")
+    message +=  "today."; 
 
 } else if (days > 1) {
-  console.log("in " + days + " days.")
+    message += "in " + days + " days."; 
 
 } else {
-  console.log("tomorrow.")
+    message += "tomorrow."; 
 }
 
 process.exit(0);
