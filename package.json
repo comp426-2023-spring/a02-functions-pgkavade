@@ -2,7 +2,7 @@
     "name": "a02-functions-pgkavade",
     "version": "1.0.0",
     "description": "Create a command line Node.js package that ingests API data from Open-Meteo",
-    "main": "index.js",
+    "main": "galosh.js",
     "scripts": {
       "test": "node cli.js -n 35.92 -w 79.05 -z America/New_York"
     },
