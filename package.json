@@ -1,7 +1,7 @@
 {
     "name": "a02-functions-pgkavade",
     "version": "1.0.0",
-    "description": "Create a command line Node.js package that ingests API data from Open-Meteo.",
+    "description": "Create a command line Node.js package that ingests API data from Open-Meteo",
     "main": "index.js",
     "scripts": {
       "test": "node cli.js -n 35.92 -w 79.05 -z America/New_York"
@@ -11,16 +11,16 @@
       "url": "git+https://github.com/comp426-2023-spring/a02-functions-pgkavade.git"
     },
     "keywords": [
-        "galosh",
-        "app"
+      "galosh",
+      "app"
     ],
-    "author": "@pgkavade",
+    "author": "pgkavade",
     "license": "GPL-3.0-or-later",
     "bugs": {
       "url": "https://github.com/comp426-2023-spring/a02-functions-pgkavade/issues"
     },
     "bin": {
-        "galosh.js": "./cli.js"
+      "galosh.js": "./cli.js"
     },
     "type": "module",
     "homepage": "https://github.com/comp426-2023-spring/a02-functions-pgkavade#readme",
