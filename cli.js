@@ -20,5 +20,12 @@ if (args.h) {
 const lat = args.n || args.s * -1;
 const long = args.e || args.w * -1;
 const time = moment.tz.guess();
+const data = await response.json();
 
 const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,sunrise,precipitation_sum,precipitation_hours&timezone=${timezone}`);
+
+if (args.j) {
+    console.log(data);
+    process.exit(0);
+}
+
