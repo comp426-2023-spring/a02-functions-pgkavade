@@ -19,25 +19,29 @@ if (arg.h) {
 
 const lat = args.n || args.s * -1;
 const long = args.e || args.w * -1;
-const timezone = moment.tz.guess() || args.z;
+const timezone = moment.tz.guess();
 
 const response = await fetch("https://api.open-meteo.com/v1/forecast?latitude=" + lat + "&longitude=" + long + "&daily=precipitation_hours&current_weather=true&timezone=" + timezone);
 const data = await response.json();
-const days = args.d
 
 
 if (arg.j) {
-    data.lat = Math.round(data.lat * 100) / 100;
-    data.long = Math.round(data.long * 100) / 100; 
     console.log(data);
     process.exit(0);
 }
 
-if(data.daily.precipitation_hours[days] == 0){
-    process.stdout.write("You will not need your galoshes "); 
+let days;
+if (args.d == null) {
+	days = 1;
+} else {
+	days = args.d;
+}
+
+if(data.daily.precipitation_hours[days] > 0){
+    process.stdout.write("You might need your galoshes "); 
 
 } else {
-    process.stdout.write("You might need your galoshes ");
+    process.stdout.write("You will not need your galoshes ");
 }
 
 if (days == 0){
