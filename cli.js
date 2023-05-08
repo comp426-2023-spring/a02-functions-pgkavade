@@ -56,4 +56,4 @@ if (days == 0){
     message += "tomorrow."; 
 }
 
-process.exit(0);
+console.log(weather); 
