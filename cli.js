@@ -22,9 +22,7 @@ const timezone = moment.tz.guess();
 const latitude = args.n || (args.s * -1);
 const longitude = args.e || (args.w * -1);
 
-const url = 'https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&daily=precipitation_hours&temperature_unit=fahrenheit&timezone=' + timezone;
-
-const response = await fetch(url);
+const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&daily=precipitation_hours&temperature_unit=fahrenheit&timezone=' + timezone);
 const data = await response.json();
 
 if (args.j) {
@@ -32,17 +30,17 @@ if (args.j) {
     process.exit(0);
 }
 
-const days_count = args.d
+const days = args.d
 
-if (days_count == 0) {
+if (days == 0) {
   console.log("today.")
-} else if (days_count > 1) {
-  console.log("in " + days_count + " days.")
+} else if (days > 1) {
+  console.log("in " + days + " days.")
 } else {
   console.log("tomorrow.")
 }
 
-if (data.daily.precipitation_hours[days_count] == 0) {
+if (data.daily.precipitation_hours[days] == 0) {
     console.log("You will not need your galoshes.");
 } else {
     console.log("You might need your galoshes.");
