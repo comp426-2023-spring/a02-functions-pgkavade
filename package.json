@@ -11,16 +11,15 @@
       "url": "git+https://github.com/comp426-2023-spring/a02-functions-pgkavade.git"
     },
     "keywords": [
-      "node",
-      "command",
-      "args",
-      "https"
+        "galosh",
+        "app"
     ],
     "author": "@pgkavade",
-    "license": "AGPL-3.0-or-later",
+    "license": "GPL-3.0-or-later",
     "bugs": {
       "url": "https://github.com/comp426-2023-spring/a02-functions-pgkavade/issues"
     },
+    "type": "module",
     "homepage": "https://github.com/comp426-2023-spring/a02-functions-pgkavade#readme",
     "dependencies": {
       "minimist": "^1.2.8",
