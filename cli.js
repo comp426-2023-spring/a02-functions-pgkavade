@@ -17,24 +17,31 @@ if (args.h) {
     process.exit(0);
 }
 
-const lat = args.n || args.s * -1;
-const long = args.e || args.w * -1;
-const time = moment.tz.guess();
-const data = await response.json();
+const timezone = moment.tz.guess() || args.z;
 
-const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=weathercode,temperature_2m_max,sunrise,precipitation_sum,precipitation_hours&timezone=${timezone}`);
+const latitude = args.n || (args.s * -1);
+const longitude = args.e || (args.w * -1);
+
+const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=' + latitude + '&longitude=' + longitude + '&daily=precipitation_hours&temperature_unit=fahrenheit&timezone=' + timezone);
+const data = await response.json();
 
 if (args.j) {
     console.log(data);
     process.exit(0);
 }
 
-const days = args.d; 
+const days_count = args.d
 
-const string = days == 0 ? "today." : days > 1 ? "in " + days + " days." : "tomorrow.";
-
-if (data.daily.precipitation_hours[days] > 0) {
-    console.log(`There will be rain ${string}`);
+if (days_count == 0) {
+  console.log("today.")
+} else if (days_count > 1) {
+  console.log("in " + days_count + " days.")
 } else {
-    console.log(`There will be no rain ${string}`);
+  console.log("tomorrow.")
+}
+
+if (data.daily.precipitation_hours[days_count] == 0) {
+    console.log("You will not need your galoshes.");
+} else {
+    console.log("You might need your galoshes.");
 }
