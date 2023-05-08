@@ -29,3 +29,12 @@ if (args.j) {
     process.exit(0);
 }
 
+const days = args.d; 
+
+const string = days == 0 ? "today." : days > 1 ? "in " + days + " days." : "tomorrow.";
+
+if (data.daily.precipitation_hours[days] > 0) {
+    console.log(`There will be rain ${string}`);
+} else {
+    console.log(`There will be no rain ${string}`);
+}
