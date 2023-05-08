@@ -39,9 +39,9 @@ if (days == 0) {
   } else {
     console.log("tomorrow.")
   }
-  
-  if (data.daily.precipitation_hours[days] == 0) {
-      console.log("It will not rain.");
-  } else {
-      console.log("It will rain.");
-  }
+
+if (data.daily.precipitation_hours[days] > 0) {
+    console.log("It will not rain.");
+} else {
+    console.log("It will rain.");
+}
