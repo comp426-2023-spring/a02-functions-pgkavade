@@ -56,4 +56,4 @@ if (days == 0){
     message += "tomorrow."; 
 }
 
-console.log(weather); 
+console.log(message); 
