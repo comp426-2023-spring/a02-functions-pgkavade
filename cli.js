@@ -30,15 +30,17 @@ if (arg.j) {
     process.exit(0);
 }
 
-if (days_count == 0) {
+const days = args.d
+
+if (days == 0) {
     console.log("today.")
-  } else if (days_count > 1) {
-    console.log("in " + days_count + " days.")
+  } else if (days > 1) {
+    console.log("in " + days + " days.")
   } else {
     console.log("tomorrow.")
   }
   
-  if (data.daily.precipitation_hours[days_count] == 0) {
+  if (data.daily.precipitation_hours[days] == 0) {
       console.log("It will not rain.");
   } else {
       console.log("It will rain.");
