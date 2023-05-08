@@ -35,7 +35,7 @@ const days = args.d;
 const string = days == 0 ? "today." : days > 1 ? "in " + days + " days." : "tomorrow.";
 
 if (data.daily.precipitation_hours[days] > 0) {
-    console.log("It will not rain.");
+    console.log("It will not rain." + string);
 } else {
-    console.log("It will rain.");
+    console.log("It will rain." + string);
 }
