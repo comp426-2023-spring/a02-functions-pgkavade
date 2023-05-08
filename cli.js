@@ -6,15 +6,15 @@ import fetch from 'node-fetch';
 
 const args = minimist(process.argv.slice(2));
 
-if (args.h) {
-    console.log("Usage: galosh.js [options] -[n|s] LATITUDE -[e|w] LONGITUDE -z TIME_ZONE");
-    console.log("    -h            Show this help message and exit.");
-    console.log("    -n, -s        Latitude: N positive; S negative.");
-    console.log("    -e, -w        Longitude: E positive; W negative.");
-    console.log("    -z            Time zone: uses tz.guess() from moment-timezone by default.");
-    console.log("    -d 0-6        Day to retrieve weather: 0 is today; defaults to 1.");
-    console.log("    -j            Echo pretty JSON from open-meteo API and exit.");
-    process.exit(0);
+if (arg.h) {
+	console.log(`Usage: galosh.js [options] -[n|s] LATITUDE -[e|w] LONGITUDE -z TIME_ZONE
+    -h            Show this help message and exit.
+    -n, -s        Latitude: N positive; S negative.
+    -e, -w        Longitude: E positive; W negative.
+    -z            Time zone: uses tz.guess() from moment-timezone by default.
+    -d 0-6        Day to retrieve weather: 0 is today; defaults to 1.
+    -j            Echo pretty JSON from open-meteo API and exit`);
+	process.exit(0);
 }
 
 const lat = args.n || args.s * -1;
@@ -43,7 +43,7 @@ if (days > 1) {
 }
 
 if (data.daily.precipitation_hours[days] > 0) {
-    console.log("It will not rain " + string);
-} else {
     console.log("It will rain " + string);
+} else {
+    console.log("It will not rain " + string);
 }
