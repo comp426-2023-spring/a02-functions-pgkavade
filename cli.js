@@ -31,6 +31,9 @@ if (arg.j) {
     process.exit(0);
 }
 
+data.lat = Math.round(data.lat * 100) / 100;
+data.long = Math.round(data.long * 100) / 100; 
+
 if(data.daily.precipitation_hours[days] == 0){
     process.stdout.write("You will not need your galoshes "); 
 
